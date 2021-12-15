@@ -15,4 +15,9 @@ public class StoreServiceImpl implements StoreService{
     public void registerMerchant(Store store) {
         storeRepository.save(store);
     }
+
+    @Override
+    public Store getUserByUserId(Long userId) {
+        return storeRepository.findByUser_id(userId);
+    }
 }

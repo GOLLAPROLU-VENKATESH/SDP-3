@@ -89,11 +89,16 @@ public class HomeController {
         boolean b=usersService.loginUser(users);
         if(b){
             Users u=usersService.getUserByEmail(users.getEmail());
+            try{
+                Store s=storeService.getUserByUserId(u.getUserId());
+                Long storeid=s.getUsers().getUserId();
+                session.setAttribute("storeid",storeid);
+            } catch (Exception e){
+            }
             session.setAttribute("id",u.getUserId());
             session.setAttribute("user",u.getUserName());
             model.addAttribute("loginsuccess",1);
             model.addAttribute("sessionId",u.getUserId());
-//            System.out.println(u.getUserId());
             return "home";
         }else{
             model.addAttribute("loginfailed",1);
@@ -105,6 +110,11 @@ public class HomeController {
         session.invalidate();
         model.addAttribute("logoutsuccess",1);
         return "home";
+    }
+    @RequestMapping(value = "/store")
+    public String store(Model model,HttpSession session){
+        model.addAttribute("title","Events - Wood & Yarn");
+        return "shop";
     }
 
 }

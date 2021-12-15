@@ -5,4 +5,6 @@ import com.sdp3.SDP3.entites.Store;
 public interface StoreService {
 
     void registerMerchant(Store store);
+
+    Store getUserByUserId(Long userId);
 }
