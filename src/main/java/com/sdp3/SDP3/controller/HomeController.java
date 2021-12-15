@@ -1,6 +1,8 @@
 package com.sdp3.SDP3.controller;
 
+import com.sdp3.SDP3.entites.Store;
 import com.sdp3.SDP3.entites.Users;
+import com.sdp3.SDP3.service.StoreService;
 import com.sdp3.SDP3.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,9 @@ public class HomeController {
 
     @Autowired
     private UsersService usersService;
+
+    @Autowired
+    private StoreService storeService;
 
     @RequestMapping("/home")
     public String home(Model model){
@@ -48,6 +53,21 @@ public class HomeController {
         model.addAttribute("title","ContactUs - Wood & Yarn");
         return "contact";
     }
+    @RequestMapping("/merchantRegister")
+    public String merchant(Model model){
+        model.addAttribute("title","Be a Merchant - Wood & Yarn");
+        return "merch";
+    }
+
+    @RequestMapping(value="/merchantRegister",method = RequestMethod.POST)
+    public String merchantRegister(@ModelAttribute("store") Store store, Model model,HttpSession session){
+        model.addAttribute("title","Be a Merchant - Wood & Yarn");
+        Long uid=(Long) session.getAttribute("id");
+        Users users=usersService.getUserByUserId(uid);
+        store.setUsers(users);
+        storeService.registerMerchant(store);
+        return "home";
+    }
 
     @RequestMapping("/events")
     public String events(Model model){
@@ -57,7 +77,6 @@ public class HomeController {
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String register(@ModelAttribute("user") Users users,Model model,HttpSession session){
-
         model.addAttribute("title","Home - Wood & Yarn");
         usersService.saveUser(users);
         model.addAttribute("signupsuccess",1);

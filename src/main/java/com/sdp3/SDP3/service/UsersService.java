@@ -7,4 +7,5 @@ public interface UsersService {
     void saveUser(Users users);
     boolean loginUser(Users users);
     Users getUserByEmail(String email);
+    Users getUserByUserId(Long userid);
 }
