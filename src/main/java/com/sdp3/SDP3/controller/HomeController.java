@@ -114,7 +114,7 @@ public class HomeController {
     @RequestMapping(value = "/store")
     public String store(Model model,HttpSession session){
         model.addAttribute("title","Events - Wood & Yarn");
-        return "shop";
+        return "store";
     }
 
 }
