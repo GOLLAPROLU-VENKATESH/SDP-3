@@ -44,4 +44,15 @@ public class Store {
             referencedColumnName = "storeId"
     )
     private List<Blog> blogs;
+
+    @OneToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "store_id",
+            referencedColumnName = "storeId"
+    )
+    private List<Product> products;
+
+
 }

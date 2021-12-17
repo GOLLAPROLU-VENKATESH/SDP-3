@@ -6,9 +6,107 @@
 </head>
 <body>
 <section>
-    <strong th:text="${store.storeImage}"></strong>
-    <img th:src="@{'/img/'+${store.storeImage}}" />
+<!--    -->
+<!--    <img " />-->
 
+    <div class="py-3 text-center">
+        <img class="d-block mx-auto mb-4" th:src="@{'/img/'+${store.storeImage}}" alt="" width="120" height="120">
+        <strong th:text="${store.storeName}"></strong>
+    </div>
+
+    <hr class="featurette-divider"/>
+    <center>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        Add Product
+                    </button>
+
+                </div>
+                <div class="col">
+
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        Add Blog
+                    </button>
+
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                        Participate in a Event
+                    </button>
+                </div>
+            </div>
+        </div>
+    </center>
+
+
+
+
+    <!-- Modal 1-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...1
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...2
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...3
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
 </html>

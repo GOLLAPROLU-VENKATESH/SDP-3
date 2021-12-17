@@ -12,20 +12,18 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Builder
-public class Blog {
+public class Category {
     @Id
     @SequenceGenerator(
-            name = "blog_id_sequence",
-            sequenceName = "blog_id_sequence",
+            name = "category_id_sequence",
+            sequenceName = "category_id_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "blog_id_sequence"
+            generator = "category_id_sequence"
     )
-    private Long blogId;
-    private String blogTitle;
-    private String blogDescription;
-    private String blogVideo;
-    private String blogImage;
+    private Long categoryId;
+    private String categoryTitle;
+    private String categoryDescription;
 }
