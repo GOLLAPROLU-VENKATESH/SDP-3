@@ -12,7 +12,7 @@
                     class="col-lg-5 mx-auto border rounded shadow-lg p-3 mb-5 bg-white rounded pt-4 pb-4 m-4"
             >
                 <h3 align="center">Contact Us</h3>
-                <form class="row g-3" th:action="@{/merchantRegister}" method="post">
+                <form class="row g-3" th:action="@{/merchantRegister}" method="post" th:object="${store}" enctype="multipart/form-data">
 
                     <div class="form-group mt-3">
                         <label>User Name</label>
@@ -57,6 +57,10 @@
                         />
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Store Logo</label>
+                        <input class="form-control" type="file" id="formFileMultiple" name="storeimage">
                     </div>
                     <div class="form-group mt-3">
                         <button type="submit" name="submit" class="btn btn-dark">

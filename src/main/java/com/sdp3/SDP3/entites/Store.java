@@ -28,6 +28,7 @@ public class Store {
     private String storeName;
     private String phoneNumber;
     private String email;
+    private String storeImage;
 
     @OneToOne(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY

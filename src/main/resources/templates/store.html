@@ -6,7 +6,8 @@
 </head>
 <body>
 <section>
-    store
+    <strong th:text="${store.storeImage}"></strong>
+    <img th:src="@{'/img/'+${store.storeImage}}" />
 </section>
 </body>
 </html>
