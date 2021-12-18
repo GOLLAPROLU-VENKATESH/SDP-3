@@ -28,4 +28,9 @@ public class Blog {
     private String blogDescription;
     private String blogVideo;
     private String blogImage;
+
+
+    @ManyToOne
+    @JoinColumn(name="store_id", nullable=false)
+    private Store store;
 }

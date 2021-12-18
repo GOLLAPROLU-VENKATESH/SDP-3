@@ -40,4 +40,8 @@ public class Product {
             referencedColumnName = "productId"
     )
     private List<Category> categories;
+
+    @ManyToOne
+    @JoinColumn(name="store_id", nullable=false)
+    private Store store;
 }

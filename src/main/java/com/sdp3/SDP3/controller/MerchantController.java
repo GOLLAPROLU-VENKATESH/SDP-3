@@ -68,7 +68,7 @@ public class MerchantController {
 
         }
 
-        return "home";
+        return "store";
     }
 
 
