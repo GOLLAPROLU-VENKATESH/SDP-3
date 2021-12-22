@@ -30,4 +30,10 @@ public class ProductServiceImpl implements ProductService{
         Product p=productRepository.findByProductId(id);
         return p;
     }
+
+    @Override
+    public List<Product> getProductsByStoreId(Long storeId) {
+
+        return productRepository.findByStoreId(storeId);
+    }
 }

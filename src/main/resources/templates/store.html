@@ -70,11 +70,74 @@
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
 
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
+                            <div class="card border-dark shadow bg-body rounded container-fluid col" th:each="p :${stprod}" style="width: 25rem;">
+                                <div class="card-header"><h5 th:text="${p.productTitle}"></h5></div>
+                                <div class="card-body">
+                                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <center>
+                                                    <img th:src="@{'/img/'+${p.productImage1}}"  height="250" width="250" alt="Sample"
+                                                    ></center>
+                                            </div>
+                                            <div class="carousel-item ">
+                                                <center>
+                                                    <img th:src="@{'/img/'+${p.productImage2}}" height="250" width="250"
+                                                    ></center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <h6>Description :</h6>
+                                    <p class="card-text" th:text="${p.productDescription}"></p>
+                                </div>
+                                <div class="card-footer">
+
+                                    <center>
+                                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Add To Favorite"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                        </svg></button>&nbsp;&nbsp;&nbsp
+
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a th:href="@{'/shop/buy/'+${p.productId}}"><button type="button" class="btn btn-outline-dark" >Buy Know</button></a>
+                                        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Video on how Product made by the Seller">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                        </svg>
+                                    </button>
+
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="collapse" id="collapseExample2">
                     <div class="card card-body">
-                        Blogs
+                        <div class="container mb-3 mt-3" th:each="b :${stblog}">
+                            <div>
+                                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                    <div class="col p-4 d-flex flex-column position-static">
+                                        <strong class="d-inline-block mb-2 text-primary">Store Name</strong>
+                                        <h3 class="mb-0" th:text="${b.blogTitle}"></h3>
+                                        <div class="mb-1 text-muted">Nov 12</div>
+                                        <p class="card-text mb-auto"  th:text="${b.blogDescription}"></p>
+                                        <a href="#" class="stretched-link">Continue reading</a>
+                                    </div>
+                                    <div class="col-auto d-none d-lg-block">
+                                        <img
+                                                th:src="@{'/img/'+${b.blogImage}}"
+                                                class="card-img-top"
+                                                alt="..."
+                                                style="height: 400px;width:600px;"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

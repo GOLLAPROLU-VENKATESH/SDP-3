@@ -31,6 +31,7 @@ public class HomeController {
     @Autowired
     private BlogService blogService;
 
+
     @RequestMapping("/home")
     public String home(Model model){
         model.addAttribute("title","Home - Wood & Yarn");
@@ -87,6 +88,10 @@ public class HomeController {
         Long uid=(Long) session.getAttribute("storeid");
         Store s=storeService.getUserByUserId(uid);
         model.addAttribute("store",s);
+        List<Product> products=productService.getProductsByStoreId(s.getStoreId());
+        model.addAttribute("stprod",products);
+        List<Blog> blogs=blogService.getBlogByStoreId(s.getStoreId());
+        model.addAttribute("stblog",blogs);
         return "store";
     }
 
