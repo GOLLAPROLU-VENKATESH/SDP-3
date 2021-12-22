@@ -39,7 +39,7 @@ public class StoreController {
     @RequestMapping(value = "/addProducts",method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product, Model model, HttpSession session,
                              @RequestParam("productimage1") MultipartFile file1,
-                             @RequestParam("productimage1") MultipartFile file2){
+                             @RequestParam("productimage2") MultipartFile file2){
         Long uid=(Long) session.getAttribute("storeid");
         Store s=storeService.getUserByUserId(uid);
         model.addAttribute("store",s);
@@ -66,7 +66,6 @@ public class StoreController {
             productService.saveProduct(product);
 
         }catch (Exception e){
-
         }
 
         return "store";

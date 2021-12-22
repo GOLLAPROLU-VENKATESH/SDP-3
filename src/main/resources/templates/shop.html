@@ -6,84 +6,57 @@
 </head>
 <body>
 <section>
-
-
-    <div class="container-xl nav-item dropdown mt-3 mb-3">
-        <a class="nav-link " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Filter Category
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            {% for category in category %}
-            <li><a class="dropdown-item" href="?category={{category.id}}">{{category.name}}</a></li>
-            {% endfor %}
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/DialyDeals/">All Category</a></li>
-        </ul>
-    </div>
-
-
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for product in product %}
-
-            <div class="container-fluid col">
-                <!--            style="width: 23rem; height:42rem;"-->
-                <div class="card border-dark mb-3 shadow bg-body rounded">
-                    <div class="card-header"><h5>{{product.name}}</h5></div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
+                <div class="card border-dark shadow bg-body rounded container-fluid col" th:each="p :${products}" style="width: 25rem;">
+                    <div class="card-header"><h5 th:text="${p.productTitle}"></h5></div>
                     <div class="card-body">
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <center>
-                                        <img class="img-fluid" src="{{product.img_1.url}}" alt="Sample"
+                                        <img th:src="@{'/img/'+${p.productImage1}}"  height="250" width="250" alt="Sample"
                                         ></center>
                                 </div>
                                 <div class="carousel-item ">
                                     <center>
-                                        <img class="img-fluid" src="{{product.img_2.url}}"
+                                        <img th:src="@{'/img/'+${p.productImage2}}" height="250" width="250"
                                         ></center>
                                 </div>
                             </div>
                         </div>
-                        <center>
-                            <h6 class="card-title mt-1"><img src="{% static 'ss.png' %}" style="width:15px;height:15px;">
-                                {{product.rating}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                Status : {% if product.status %}
-                                <img src="{% static 'ge.png' %}" style="width:15px;height:15px;">
-                                {% else %}
-                                <img src="{% static 're.jpg' %}" style="width:15px;height:15px;">
-                                {% endif %}
-                            </h6>
-
-                            <h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
-
-                        <center>Category : {{product.category}}<br>
-                            Estore   : {{product.estore}}<br>
-                            Date : {{product.start_time | date:"F d Y" }}<br>Offer Timings :   {{product.start_time | time:"h:i A"}}
-                            to {{ product.End_time | time:"h:i A" }}
-                        </center>
-                        <center class="mt-2"><a
-                                href="{{product.product_url}}"
-                                class="btn btn-dark"
-                                rel="noopener noreferrer"
-                                target="_blank"
-                        >Buy now</a
-                        ></center>
-
+                        <hr>
+                        <h6>Description :</h6>
+                        <p class="card-text" th:text="${p.productDescription}"></p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Posted On: {{product.uploaded_time}}</small>
+
+                        <center>
+                            <button type="button" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Add To Favorite"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg></button>&nbsp;&nbsp;&nbsp
+
+                            &nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/shop/buy/'+${p.productId}}"><button type="button" class="btn btn-outline-dark" >Buy Know</button></a>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Video on how Product made by the Seller">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                </svg>
+                            </button>
+
+                        </center>
                     </div>
                 </div>
-            </div>
-
-            {% endfor %}
         </div>
     </div>
+
+
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
 
 
 </section>

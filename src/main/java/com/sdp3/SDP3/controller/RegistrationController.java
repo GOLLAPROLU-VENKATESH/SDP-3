@@ -23,7 +23,7 @@ public class RegistrationController {
     private StoreService storeService;
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") Users users, Model model, HttpSession session){
+    public String register(@ModelAttribute("user") Users users, Model model){
         model.addAttribute("title","Home - Wood & Yarn");
         usersService.saveUser(users);
         model.addAttribute("signupsuccess",1);

@@ -6,14 +6,14 @@
 </head>
 <body>
 <section>
-<!--    -->
-<!--    <img " />-->
-
+    <center><strong style="font-size:30px;text-shadow: 1px 1px 2px black;" th:text="${store.storeName}"></strong></center>
+    <hr class="featurette-divider"/>
     <div class="py-3 text-center">
         <img class="d-block mx-auto mb-4" th:src="@{'/img/'+${store.storeImage}}" alt="" width="120" height="120">
-        <strong th:text="${store.storeName}"></strong>
     </div>
-
+    <center><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+        <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+    </svg>&nbsp;<strong class="mt-8" style="font-size:20px;">Wallet Balance :</strong></center>
     <hr class="featurette-divider"/>
     <center>
         <div class="container mt-3">
@@ -40,9 +40,49 @@
         </div>
     </center>
 
+    <hr class="featurette-divider"/>
+
+    <div class="container">
+
+
+        <div class="card text-center">
+            <div class="card-header">
+                <center>
+                    <ul class="nav nav-tabs card-header-tabs">
+
+                        <li class="nav-item mb-2 col-lg-6">
+                            <a class="btn btn-outline-dark" data-bs-toggle="collapse"  href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Posted Products
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2 col-lg-6">
+                            <a class="btn btn-outline-dark" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Posted Blogs
+                            </a>
+                        </li>
+
+                    </ul>
+                </center>
+
+            </div>
+            <div class="card-body">
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+
+                    </div>
+                </div>
+                <div class="collapse" id="collapseExample2">
+                    <div class="card card-body">
+                        Blogs
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
+    </div>
     <!-- Modal 1-->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
