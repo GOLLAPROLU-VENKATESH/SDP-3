@@ -41,6 +41,10 @@ public class ShopController {
     public String buyProduct(@PathVariable(value = "id") String pid, HttpSession session, Model model){
         Product p=productService.findProductById(pid);
         Long uid=(Long) session.getAttribute("id");
+        if(uid==null){
+            model.addAttribute("bsorl",1);
+            return "home";
+        }
         Users u=usersService.getUserByUserId(uid);
         Store s=p.getStore();
 
