@@ -5,6 +5,8 @@ import com.sdp3.SDP3.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderServiceImpl implements OrderService{
 
@@ -19,5 +21,10 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Orders getOrderById(String order_id) {
         return orderRepository.findByOrderId(order_id);
+    }
+
+    @Override
+    public List<Orders> getOrdersByUserId(Long uid) {
+        return orderRepository.findOrdersByUserId(uid);
     }
 }

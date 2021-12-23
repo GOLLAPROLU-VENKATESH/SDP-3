@@ -1,13 +1,7 @@
 package com.sdp3.SDP3.controller;
 
-import com.sdp3.SDP3.entites.Blog;
-import com.sdp3.SDP3.entites.Product;
-import com.sdp3.SDP3.entites.Store;
-import com.sdp3.SDP3.entites.Users;
-import com.sdp3.SDP3.service.BlogService;
-import com.sdp3.SDP3.service.ProductService;
-import com.sdp3.SDP3.service.StoreService;
-import com.sdp3.SDP3.service.UsersService;
+import com.sdp3.SDP3.entites.*;
+import com.sdp3.SDP3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +25,8 @@ public class HomeController {
     @Autowired
     private BlogService blogService;
 
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping("/home")
     public String home(Model model){
@@ -96,8 +92,11 @@ public class HomeController {
     }
 
     @RequestMapping("/orders")
-    public String orders(Model model){
+    public String orders(Model model,HttpSession session){
         model.addAttribute("title","Orders - Wood & Yarn");
+        Long uid=(Long) session.getAttribute("id");
+        List<Orders> orders=orderService.getOrdersByUserId(uid);
+        model.addAttribute("userorders",orders);
         return "orders";
     }
 

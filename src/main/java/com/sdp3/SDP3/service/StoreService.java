@@ -7,4 +7,6 @@ public interface StoreService {
     void registerMerchant(Store store);
 
     Store getUserByUserId(Long userId);
+
+    Store getStoreByStoreId(Long sid);
 }

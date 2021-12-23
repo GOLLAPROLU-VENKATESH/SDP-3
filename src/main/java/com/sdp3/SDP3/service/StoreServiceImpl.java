@@ -20,4 +20,9 @@ public class StoreServiceImpl implements StoreService{
     public Store getUserByUserId(Long userId) {
         return storeRepository.findByUser_id(userId);
     }
+
+    @Override
+    public Store getStoreByStoreId(Long sid) {
+        return storeRepository.getStoreByStoreId(sid);
+    }
 }

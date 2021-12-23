@@ -36,4 +36,9 @@ public class ProductServiceImpl implements ProductService{
 
         return productRepository.findByStoreId(storeId);
     }
+
+    @Override
+    public Product getByProductById(Long pid) {
+        return productRepository.getProductById(pid);
+    }
 }

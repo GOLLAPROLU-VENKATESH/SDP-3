@@ -8,6 +8,7 @@ import com.sdp3.SDP3.entites.Store;
 import com.sdp3.SDP3.entites.Users;
 import com.sdp3.SDP3.service.OrderService;
 import com.sdp3.SDP3.service.ProductService;
+import com.sdp3.SDP3.service.StoreService;
 import com.sdp3.SDP3.service.UsersService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class ShopController {
     @Autowired
     private OrderService orderService;
 
-
+    @Autowired
+    private StoreService storeService;
 
     @RequestMapping("/buy/{id}")
     public String buyProduct(@PathVariable(value = "id") String pid, HttpSession session, Model model){
@@ -76,12 +78,13 @@ public class ShopController {
         o.setPaymentId(null);
         o.setOrderStatus("created");
         Long uid=(Long) session.getAttribute("id");
-        o.setUserId(uid);
+        o.setOrderedUserId(usersService.getUserByUserId(uid));
         Long sid=(Long) session.getAttribute("buysid");
-        o.setOrderedStoreId(sid);
+        o.setOrderedStoreId(storeService.getStoreByStoreId(sid));
         Long pid=(Long) session.getAttribute("buypid");
-        o.setProductId(pid);
+        o.setOrderedProductId(productService.getByProductById(pid));
         o.setOrderReceipt(order.get("receipt"));
+        o.setOrderState("SellerAtToConfirm");
         orderService.saveOrder(o);
         return order.toString();
     }
