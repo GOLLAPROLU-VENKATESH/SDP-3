@@ -33,9 +33,17 @@ public class RegistrationController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(@ModelAttribute("user") Users users,Model model,HttpSession session){
         model.addAttribute("title","Home - Wood & Yarn");
-        boolean b=usersService.loginUser(users);
-        if(b){
-            Users u=usersService.getUserByEmail(users.getEmail());
+        System.out.println(users.getEmail()+" "+users.getPassword());
+        Users u=usersService.loginUser(users);
+        if(u.getEmail().equals("new")){
+            model.addAttribute("loginfailednewuser",1);
+            return "home";
+        }
+        else if(u.getEmail().equals("epw")){
+            model.addAttribute("loginfailed",1);
+            return "home";
+        }
+        else {
             try{
                 Store s=storeService.getUserByUserId(u.getUserId());
                 Long storeid=s.getUsers().getUserId();
@@ -47,9 +55,6 @@ public class RegistrationController {
             session.setAttribute("user",u.getUserName());
             model.addAttribute("loginsuccess",1);
             model.addAttribute("sessionId",u.getUserId());
-            return "home";
-        }else{
-            model.addAttribute("loginfailed",1);
             return "home";
         }
     }
