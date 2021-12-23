@@ -17,15 +17,10 @@ const paymentStart = () =>{
                     currency:'INR',
                     name:'Wood & Yarn',
                     description:'Order Payment',
-                    image:'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80',
+                    image:'https://i.ebayimg.com/images/g/DpUAAOSw1UVc8xsN/s-l400.jpg',
                     order_id:response.id,
                     handler:function(response){
-//                        console.log(response.razorpay_payment_id)
-//                        console.log(response.razorpay_order_id)
-//                        console.log(response.razorpay_signature)
                         updatePaymentInServer(response.razorpay_payment_id,response.razorpay_order_id,"paid");
-
-
                     },
                     "prefill": {
                         "name": "",
@@ -86,8 +81,4 @@ function updatePaymentInServer(payment_id,order_id,order_status){
 }
 
 
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
 
