@@ -60,8 +60,9 @@ public class ShopController {
     public String orderC(@RequestBody Map<String,Object> data,HttpSession session)throws Exception{
         System.out.println(data);
         int amt=Integer.parseInt(data.get("amount").toString());
+        String address=data.get("address").toString();
+        System.out.println(address);
         var client=new RazorpayClient("rzp_test_Upla1xiTApXSWX","VMC8m3cJ5NIhAEWWBsCPdf1a");
-
         JSONObject options = new JSONObject();
         options.put("amount", amt*100);
         options.put("currency", "INR");
@@ -71,6 +72,7 @@ public class ShopController {
         Orders o=new Orders();
         o.setOrderAmount(order.get("amount")+"");
         o.setOrderId(order.get("id"));
+        o.setOrderAddress(address);
         o.setPaymentId(null);
         o.setOrderStatus("created");
         Long uid=(Long) session.getAttribute("id");

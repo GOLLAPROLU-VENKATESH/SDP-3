@@ -1,10 +1,10 @@
 const paymentStart = () =>{
     let amount = $("#amount").val();
-    console.log(amount);
+    let address= $("#address").val();
 
     $.ajax({
         url:'/shop/buy/orderc',
-        data:JSON.stringify({amount:amount,info:'order_request'}),
+        data:JSON.stringify({amount:amount,info:'order_request',address:address}),
         contentType:'application/json',
         type:'POST',
         dataType:'json',
@@ -67,7 +67,7 @@ function updatePaymentInServer(payment_id,order_id,order_status){
         dataType:'json',
         success:function(response){
             swal("Good job!", "Payment success! ", "success");
-            var delayInMilliseconds = 3000; //1 second
+            var delayInMilliseconds = 2000;
 
             setTimeout(function() {
               window.location.href = "/orders";

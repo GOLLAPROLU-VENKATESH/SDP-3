@@ -30,7 +30,7 @@
                                 <h6 class="my-0" th:text="${product.productTitle}"></h6>
                                 <small class="text-muted" th:text="${product.productDescription}"></small>
                             </div>
-                            <span class="text-muted" th:text="${product.productCost}"></span>
+                            <span class="text-muted" th:text="'Rs. '+${product.productCost}"></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
@@ -96,7 +96,7 @@
                                 <label class="form-label">Address</label>
                                 <textarea
                                         class="form-control mt-1"
-                                        id="exampleFormControlTextarea1"
+                                        id="address"
                                         rows="6"
                                         name="query"
                                 ></textarea>
@@ -111,16 +111,14 @@
         </main>
 
     </div>
-
-                        <input
-                                required
-                                type="number"
-                                id="amount"
-                                th:value="${product.productCost}"
-                                class="form-control mt-1"
-                                hidden
-                        />
-
+    <input
+            required
+            type="number"
+            id="amount"
+            th:value="${product.productCost}"
+            class="form-control mt-1"
+            hidden
+    />
 
 </section>
 </body>

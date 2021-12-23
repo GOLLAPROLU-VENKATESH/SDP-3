@@ -34,4 +34,5 @@ public class Orders {
     private Long userId;
     private Long productId;
     private String paymentId;
+    private String orderAddress;
 }
