@@ -1,9 +1,12 @@
 package com.sdp3.SDP3.controller;
 
 import com.sdp3.SDP3.entites.Blog;
+import com.sdp3.SDP3.entites.Orders;
 import com.sdp3.SDP3.entites.Product;
 import com.sdp3.SDP3.entites.Store;
+import com.sdp3.SDP3.repository.OrderRepository;
 import com.sdp3.SDP3.service.BlogService;
+import com.sdp3.SDP3.service.OrderService;
 import com.sdp3.SDP3.service.ProductService;
 import com.sdp3.SDP3.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Controller
 @RequestMapping("/store")
@@ -35,6 +39,9 @@ public class StoreController {
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value = "/addProducts",method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product, Model model, HttpSession session,
@@ -64,6 +71,15 @@ public class StoreController {
             }
             product.setStore(s);
             productService.saveProduct(product);
+            Long uid1=(Long) session.getAttribute("storeid");
+            Store s1=storeService.getUserByUserId(uid1);
+            model.addAttribute("store",s1);
+            List<Product> products=productService.getProductsByStoreId(s1.getStoreId());
+            model.addAttribute("stprod",products);
+            List<Blog> blogs=blogService.getBlogByStoreId(s1.getStoreId());
+            model.addAttribute("stblog",blogs);
+            List<Orders> o=orderService.getOrdersByStoreId(s1.getStoreId());
+            model.addAttribute("storders",o);
 
         }catch (Exception e){
         }
@@ -93,14 +109,38 @@ public class StoreController {
             }
             blog.setStore(s);
             blogService.saveBlog(blog);
+            Long uid1=(Long) session.getAttribute("storeid");
+            Store s1=storeService.getUserByUserId(uid1);
+            model.addAttribute("store",s1);
+            List<Product> products=productService.getProductsByStoreId(s1.getStoreId());
+            model.addAttribute("stprod",products);
+            List<Blog> blogs=blogService.getBlogByStoreId(s1.getStoreId());
+            model.addAttribute("stblog",blogs);
+            List<Orders> o=orderService.getOrdersByStoreId(s1.getStoreId());
+            model.addAttribute("storders",o);
         }catch (Exception e){
 
         }
         return "store";
     }
 
-
-
+    @RequestMapping(value = "/updateOrderState",method = RequestMethod.POST)
+    public String updateOrderState(@ModelAttribute("orders") Orders orders, Model model,HttpSession session){
+        Orders orders1=orderService.getOrderById(orders.getOrderId());
+        System.out.println(orders1.getOrderAddress());
+        orders1.setOrderState(orders.getOrderState());
+        orderService.saveOrder(orders1);
+        Long uid=(Long) session.getAttribute("storeid");
+        Store s=storeService.getUserByUserId(uid);
+        model.addAttribute("store",s);
+        List<Product> products=productService.getProductsByStoreId(s.getStoreId());
+        model.addAttribute("stprod",products);
+        List<Blog> blogs=blogService.getBlogByStoreId(s.getStoreId());
+        model.addAttribute("stblog",blogs);
+        List<Orders> o=orderService.getOrdersByStoreId(s.getStoreId());
+        model.addAttribute("storders",o);
+        return "store";
+    }
 
     @RequestMapping(value = "/regiEvent")
     public String eventRegister(){

@@ -166,7 +166,22 @@
                                         </h5>
                                         <h5 style="font-weight:normal;" class="card-text" th:text="'Payment Status : '+${o.orderStatus}"></h5>
                                         <h5 style="font-weight:normal;" class="card-text" th:text="'Delivery Status : '+${o.orderState}"></h5>
-                                        <h5 style="font-weight:normal;" class="card-text" th:text="'Order Status : '+${o.orderStatus}"></h5>
+                                        <form th:action="@{/store/updateOrderState}" method="post" th:object="${orders}">
+
+                                            <div class="input-group">
+                                                <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="orderState">
+                                                    <option selected>Choose...</option>
+                                                    <option value="Confirm Order">Confirm Order </option>
+                                                    <option value="Shipped">Shipped </option>
+                                                    <option value="Reject Order">Reject Order </option>
+                                                </select>
+
+                                                <input th:value="${o.orderId}" hidden name="orderId">
+                                                <button class="btn btn-outline-dark" type="submit">Submit</button>
+                                            </div>
+
+                                        </form>
+
                                     </div>
 
                                     <div class="col-3"> <h5>
@@ -285,7 +300,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-success">Save changes</button>
+
                 </div>
             </div>
         </div>
