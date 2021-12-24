@@ -27,4 +27,9 @@ public class OrderServiceImpl implements OrderService{
     public List<Orders> getOrdersByUserId(Long uid) {
         return orderRepository.findOrdersByUserId(uid);
     }
+
+    @Override
+    public List<Orders> getOrdersByStoreId(Long sid) {
+        return orderRepository.findOrdersByStoreId(sid);
+    }
 }

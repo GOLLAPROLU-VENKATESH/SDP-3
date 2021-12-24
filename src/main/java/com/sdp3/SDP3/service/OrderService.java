@@ -9,4 +9,6 @@ public interface OrderService {
     Orders getOrderById(String order_id);
 
     List<Orders> getOrdersByUserId(Long uid);
+
+    List<Orders> getOrdersByStoreId(Long sid);
 }

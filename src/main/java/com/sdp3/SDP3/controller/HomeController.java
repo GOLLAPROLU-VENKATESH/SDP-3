@@ -88,6 +88,8 @@ public class HomeController {
         model.addAttribute("stprod",products);
         List<Blog> blogs=blogService.getBlogByStoreId(s.getStoreId());
         model.addAttribute("stblog",blogs);
+        List<Orders> orders=orderService.getOrdersByStoreId(s.getStoreId());
+        model.addAttribute("storders",orders);
         return "store";
     }
 
