@@ -28,6 +28,9 @@ public class HomeController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private WalletService walletService;
+
     @RequestMapping("/home")
     public String home(Model model){
         model.addAttribute("title","Home - Wood & Yarn");
@@ -90,6 +93,8 @@ public class HomeController {
         model.addAttribute("stblog",blogs);
         List<Orders> orders=orderService.getOrdersByStoreId(s.getStoreId());
         model.addAttribute("storders",orders);
+        Wallet wallet=walletService.findWalletByStoreId(uid);
+        model.addAttribute("wallet",wallet);
         return "store";
     }
 

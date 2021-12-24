@@ -55,6 +55,7 @@ public class RegistrationController {
             session.setAttribute("user",u.getUserName());
             model.addAttribute("loginsuccess",1);
             model.addAttribute("sessionId",u.getUserId());
+            model.addAttribute("title","Login Successful - Wood & Yarn");
             return "home";
         }
     }
@@ -62,6 +63,7 @@ public class RegistrationController {
     public String logout(Model model,HttpSession session){
         session.invalidate();
         model.addAttribute("logoutsuccess",1);
+        model.addAttribute("title","Logout Successful - Wood & Yarn");
         return "home";
     }
 }

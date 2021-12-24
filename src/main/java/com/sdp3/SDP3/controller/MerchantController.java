@@ -2,8 +2,10 @@ package com.sdp3.SDP3.controller;
 
 import com.sdp3.SDP3.entites.Store;
 import com.sdp3.SDP3.entites.Users;
+import com.sdp3.SDP3.entites.Wallet;
 import com.sdp3.SDP3.service.StoreService;
 import com.sdp3.SDP3.service.UsersService;
+import com.sdp3.SDP3.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,8 @@ public class MerchantController {
     @Autowired
     private StoreService storeService;
 
+    @Autowired
+    private WalletService walletService;
 
     @RequestMapping("/merchantRegister")
     public String merchant(Model model){
@@ -56,12 +60,14 @@ public class MerchantController {
             Users users=usersService.getUserByUserId(uid);
             store.setUsers(users);
             storeService.registerMerchant(store);
-
+            Wallet wallet=new Wallet();
+            wallet.setWalletBalance(Long.valueOf(0));
+            wallet.setStore(store);
+            walletService.createWallet(wallet);
 //            setting storeid in the session
             Store s=storeService.getUserByUserId(uid);
             Long storeid=s.getUsers().getUserId();
             session.setAttribute("storeid",storeid);
-            System.out.println(storeid);
 
         }
         catch (Exception e){

@@ -76,11 +76,6 @@
                         alt="..."
                 />
                 <div class="carousel-caption d-none d-md-block">
-                    <!--        <h5>First slide label</h5>-->
-                    <!--        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
-                    <!--        <button class="btn btn-danger">first</button>-->
-                    <!--        <button class="btn btn-primary">second</button>-->
-                    <!--        <button class="btn btn-success">third</button>-->
                 </div>
             </div>
             <div class="carousel-item">
@@ -90,11 +85,6 @@
                         alt="..."
                 />
                 <div class="carousel-caption d-none d-md-block">
-                    <!--        <h5>Second slide label</h5>-->
-                    <!--        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
-                    <!--        <button class="btn btn-danger">first</button>-->
-                    <!--        <button class="btn btn-primary">second</button>-->
-                    <!--        <button class="btn btn-success">third</button>-->
                 </div>
             </div>
             <div class="carousel-item">
@@ -104,11 +94,6 @@
                         alt="..."
                 />
                 <div class="carousel-caption d-none d-md-block">
-                    <!--        <h5>Third slide label</h5>-->
-                    <!--        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
-                    <!--        <button class="btn btn-danger">first</button>-->
-                    <!--        <button class="btn btn-primary">second</button>-->
-                    <!--        <button class="btn btn-success">third</button>-->
                 </div>
             </div>
         </div>
@@ -132,84 +117,8 @@
         </a>
     </div>
 
-<!--    End of carousal-->
 
     <hr class="featurette-divider"/>
-
-
-<!--    <div class="container">-->
-<!--        <div class="card text-center">-->
-<!--            <div class="card-header">-->
-<!--                Featured-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-
-
-<!--                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">-->
-<!--                    <div class="card border-dark mb-3 mt-3 ml-2 shadow bg-body rounded" th:each="p :${products}">-->
-<!--                        <div class="card-header"><h5 th:text="${p.productTitle}"></h5></div>-->
-<!--                        <div class="card-body">-->
-<!--                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">-->
-<!--                                <div class="carousel-inner">-->
-<!--                                    <div class="carousel-item active">-->
-<!--                                        <center>-->
-<!--                                            <img class="img-fluid" th:src="@{'/img/'+${p.productImage1}}" alt="Sample"-->
-<!--                                            ></center>-->
-<!--                                    </div>-->
-<!--                                    <div class="carousel-item ">-->
-<!--                                        <center>-->
-<!--                                            <img class="img-fluid" th:src="@{'/img/'+${p.productImage2}}"-->
-<!--                                            ></center>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <center>-->
-<!--                                &lt;!&ndash;                            <h6 class="card-title mt-1"><img src="{% static 'ss.png' %}" style="width:15px;height:15px;">&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                {{product.rating}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                Status : {% if product.status %}&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                <img src="{% static 'ge.png' %}" style="width:15px;height:15px;">&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                {% else %}&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                <img src="{% static 're.jpg' %}" style="width:15px;height:15px;">&ndash;&gt;-->
-<!--                                &lt;!&ndash;                                {% endif %}&ndash;&gt;-->
-<!--                                &lt;!&ndash;                            </h6>-->
-
-<!--                                Price : (<strike>{{product.mrp}}</strike>) &ndash;&gt;-->
-
-<!--                                <h5 th:text="'Rs.'+${p.productCost}"></h5></center>-->
-
-<!--                            &lt;!&ndash;                        <center>Category : {{product.category}}<br>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                            Estore   : {{product.estore}}<br>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                            Date : {{product.start_time | date:"F d Y" }}<br>Offer Timings :   {{product.start_time | time:"h:i A"}}&ndash;&gt;-->
-<!--                            &lt;!&ndash;                            to {{ product.End_time | time:"h:i A" }}&ndash;&gt;-->
-<!--                            &lt;!&ndash;                        </center>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                        <center class="mt-2"><a&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                href="{{product.product_url}}"&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                class="btn btn-dark"&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                rel="noopener noreferrer"&ndash;&gt;-->
-<!--                            &lt;!&ndash;                                target="_blank"&ndash;&gt;-->
-<!--                            &lt;!&ndash;                        >Buy now</a&ndash;&gt;-->
-<!--                            &lt;!&ndash;                        ></center>&ndash;&gt;-->
-
-<!--                        </div>-->
-<!--                        <div class="card-footer">-->
-
-
-<!--                            <button type="button" class="btn btn-outline-dark" >Add to Cart</button>-->
-<!--                            <button type="button" class="btn btn-outline-dark">Buy Know</button>-->
-<!--                            &lt;!&ndash;                        <small class="text-muted">Posted On: {{product.uploaded_time}}</small>&ndash;&gt;-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-<!--            </div>-->
-<!--            <div class="card-footer text-muted">-->
-<!--                2 days ago-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 
     <div class="container">
 

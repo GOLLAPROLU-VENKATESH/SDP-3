@@ -1,14 +1,8 @@
 package com.sdp3.SDP3.controller;
 
-import com.sdp3.SDP3.entites.Blog;
-import com.sdp3.SDP3.entites.Orders;
-import com.sdp3.SDP3.entites.Product;
-import com.sdp3.SDP3.entites.Store;
+import com.sdp3.SDP3.entites.*;
 import com.sdp3.SDP3.repository.OrderRepository;
-import com.sdp3.SDP3.service.BlogService;
-import com.sdp3.SDP3.service.OrderService;
-import com.sdp3.SDP3.service.ProductService;
-import com.sdp3.SDP3.service.StoreService;
+import com.sdp3.SDP3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
@@ -42,6 +36,9 @@ public class StoreController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private WalletService walletService;
 
     @RequestMapping(value = "/addProducts",method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product, Model model, HttpSession session,
@@ -118,6 +115,9 @@ public class StoreController {
             model.addAttribute("stblog",blogs);
             List<Orders> o=orderService.getOrdersByStoreId(s1.getStoreId());
             model.addAttribute("storders",o);
+            Wallet wallet=walletService.findWalletByStoreId(uid1);
+            model.addAttribute("wallet",wallet);
+
         }catch (Exception e){
 
         }
@@ -139,6 +139,8 @@ public class StoreController {
         model.addAttribute("stblog",blogs);
         List<Orders> o=orderService.getOrdersByStoreId(s.getStoreId());
         model.addAttribute("storders",o);
+        Wallet wallet=walletService.findWalletByStoreId(uid);
+        model.addAttribute("wallet",wallet);
         return "store";
     }
 
