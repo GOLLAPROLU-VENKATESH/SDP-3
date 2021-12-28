@@ -77,6 +77,8 @@ public class StoreController {
             model.addAttribute("stblog",blogs);
             List<Orders> o=orderService.getOrdersByStoreId(s1.getStoreId());
             model.addAttribute("storders",o);
+            Wallet wallet=walletService.findWalletByStoreId(uid1);
+            model.addAttribute("wallet",wallet);
 
         }catch (Exception e){
         }

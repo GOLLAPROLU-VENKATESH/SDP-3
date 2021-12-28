@@ -1,11 +1,7 @@
 package com.sdp3.SDP3.controller;
 
-import com.sdp3.SDP3.entites.Store;
-import com.sdp3.SDP3.entites.Users;
-import com.sdp3.SDP3.entites.Wallet;
-import com.sdp3.SDP3.service.StoreService;
-import com.sdp3.SDP3.service.UsersService;
-import com.sdp3.SDP3.service.WalletService;
+import com.sdp3.SDP3.entites.*;
+import com.sdp3.SDP3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
@@ -23,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Controller
 public class MerchantController {
@@ -33,7 +30,17 @@ public class MerchantController {
     private StoreService storeService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private BlogService blogService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
     private WalletService walletService;
+
 
     @RequestMapping("/merchantRegister")
     public String merchant(Model model){
@@ -69,6 +76,17 @@ public class MerchantController {
             Long storeid=s.getUsers().getUserId();
             session.setAttribute("storeid",storeid);
 
+            Long uid11=(Long) session.getAttribute("storeid");
+            Store s11=storeService.getUserByUserId(uid11);
+            model.addAttribute("store",s11);
+            List<Product> products=productService.getProductsByStoreId(s11.getStoreId());
+            model.addAttribute("stprod",products);
+            List<Blog> blogs=blogService.getBlogByStoreId(s11.getStoreId());
+            model.addAttribute("stblog",blogs);
+            List<Orders> o=orderService.getOrdersByStoreId(s11.getStoreId());
+            model.addAttribute("storders",o);
+            Wallet wal=walletService.findWalletByStoreId(uid11);
+            model.addAttribute("wallet",wal);
         }
         catch (Exception e){
 
