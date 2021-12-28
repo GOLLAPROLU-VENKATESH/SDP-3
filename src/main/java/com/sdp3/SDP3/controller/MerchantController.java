@@ -141,13 +141,12 @@ public class MerchantController {
             model.addAttribute("storders",o);
             Wallet wal=walletService.findWalletByStoreId(uid11);
             model.addAttribute("wallet",wal);
-
+            return "store";
         }
         catch (Exception e){
-
+            return "error";
         }
 
-        return "store";
     }
 
 
