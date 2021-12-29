@@ -71,6 +71,8 @@ public class MerchantController {
             wallet.setWalletBalance(Long.valueOf(0));
             wallet.setStore(store);
             walletService.createWallet(wallet);
+
+
 //            setting storeid in the session
             Store s=storeService.getUserByUserId(uid);
             Long storeid=s.getUsers().getUserId();
