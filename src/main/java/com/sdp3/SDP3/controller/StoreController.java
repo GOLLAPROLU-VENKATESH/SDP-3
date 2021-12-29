@@ -82,6 +82,7 @@ public class StoreController {
             model.addAttribute("storders",o);
             Wallet wallet=walletService.findWalletByStoreId(uid1);
             model.addAttribute("wallet",wallet);
+<<<<<<< HEAD
 
         }catch (Exception e){
         }
@@ -117,6 +118,8 @@ public class StoreController {
             model.addAttribute("storders",o);
             Wallet wallet=walletService.findWalletByStoreId(uid1);
             model.addAttribute("wallet",wallet);
+=======
+>>>>>>> Working
 
         }catch (Exception e){
         }

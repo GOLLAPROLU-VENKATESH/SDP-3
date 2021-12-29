@@ -20,8 +20,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+<<<<<<< HEAD
 
 import static org.springframework.util.StringUtils.*;
+=======
+>>>>>>> Working
 
 @Controller
 public class MerchantController {
@@ -32,8 +35,18 @@ public class MerchantController {
     private StoreService storeService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private BlogService blogService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
     private WalletService walletService;
 
+<<<<<<< HEAD
     @Autowired
     private S3service s3service;
 
@@ -45,6 +58,8 @@ public class MerchantController {
 
     @Autowired
     private OrderService orderService;
+=======
+>>>>>>> Working
 
     @RequestMapping("/merchantRegister")
     public String merchant(Model model){
@@ -95,7 +110,10 @@ public class MerchantController {
             model.addAttribute("storders",o);
             Wallet wal=walletService.findWalletByStoreId(uid11);
             model.addAttribute("wallet",wal);
+<<<<<<< HEAD
 
+=======
+>>>>>>> Working
         }
         catch (Exception e){
 
