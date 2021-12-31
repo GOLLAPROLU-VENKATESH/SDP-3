@@ -27,7 +27,7 @@ public class Product {
     private Long productId;
     @Column(length = 500)
     private String productTitle;
-    @Column(length = 5000)
+    @Column(length = 500)
     private String productDescription;
     private String productImage1;
     private String productImage2;

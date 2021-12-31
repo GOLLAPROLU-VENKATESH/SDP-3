@@ -26,7 +26,7 @@ public class Blog {
     private Long blogId;
     @Column(length = 500)
     private String blogTitle;
-    @Column(length = 5000)
+    @Column(length = 500)
     private String blogDescription;
     private String blogVideo;
     private String blogImage;
