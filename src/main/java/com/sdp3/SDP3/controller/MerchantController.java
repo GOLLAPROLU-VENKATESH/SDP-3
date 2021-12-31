@@ -135,7 +135,7 @@ public class MerchantController {
             model.addAttribute("stblog",blogs);
             List<Orders> o=orderService.getOrdersByStoreId(s11.getStoreId());
             model.addAttribute("storders",o);
-            Wallet wal=walletService.findWalletByStoreId(uid11);
+            Wallet wal=walletService.findWalletByStoreId(s11.getStoreId());
             model.addAttribute("wallet",wal);
             return "store";
         }

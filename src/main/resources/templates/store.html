@@ -6,41 +6,37 @@
 </head>
 <body>
     <section>
-    <center><strong style="font-size:30px;text-shadow: 1px 1px 2px black;" th:text="${store.storeName}"></strong></center>
-    <hr class="featurette-divider"/>
-    <div class="py-3 text-center">
-        <img class="d-block mx-auto mb-4" th:src="@{'/storage/'+${store.storeImage}}" alt="" width="120" height="120">
-    </div>
-    <center><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
-        <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
-    </svg>&nbsp; </strong></center>
-    <hr class="featurette-divider"/>
-    <center>
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col">
-                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                        Add Product
-                    </button>
-
-                </div>
-                <div class="col">
-
-                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                        Add Blog
-                    </button>
-
+        <center>
+            <strong style="font-size:30px;text-shadow: 1px 1px 2px black;" th:text="${store.storeName}"></strong>
+        </center>
+        <hr class="featurette-divider"/>
+        <div class="py-3 text-center">
+            <img class="d-block mx-auto mb-4" th:src="@{'/storage/'+${store.storeImage}}" alt="" width="120" height="120">
+        </div>
+        <center>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+            <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+            </svg>&nbsp<strong class="mt-8" style="font-size:20px;" th:text="'Wallet Balance : Rs. '+${wallet.walletBalance}"> </strong>
+        </center>
+        <hr class="featurette-divider"/>
+        <center>
+             <div class="container mt-3">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            Add Product
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Add Blog
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </center>
-
-    <hr class="featurette-divider"/>
-
-    <div class="container">
-
-
-
+        </center>
+        <hr class="featurette-divider"/>
+        <div class="container">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Posted Products</button>
@@ -49,7 +45,6 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="card text-center">
 
