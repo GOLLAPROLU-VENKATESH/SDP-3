@@ -121,4 +121,12 @@ public class HomeController {
         return "fav";
     }
 
+    @RequestMapping("/a")
+    public String admin(Model model,HttpSession session){
+        model.addAttribute("title","Admin - Wood & Yarn");
+        List<Orders> orders=orderService.getAllOrders();
+        model.addAttribute("orders",orders);
+        return "admin";
+    }
+
 }
