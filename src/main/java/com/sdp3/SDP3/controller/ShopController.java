@@ -62,7 +62,6 @@ public class ShopController {
         int amt=Integer.parseInt(data.get("amount").toString());
         String address=data.get("address").toString();
         System.out.println(address);
-//         var client=new RazorpayClient("rzp_live_eCZv8Rpc6rj3OA","ICmXlMr0Dqrz8KGkqY9zyRzd");
         var client=new RazorpayClient("*************","****************");
         JSONObject options = new JSONObject();
         options.put("amount", amt*100);
