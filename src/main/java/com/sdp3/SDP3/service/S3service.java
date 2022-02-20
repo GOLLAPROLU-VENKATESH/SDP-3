@@ -30,8 +30,7 @@ public class S3service {
     private void initialiseS3Bucket() {
         try {
 
-//             AWSCredentials credentials = new BasicAWSCredentials("AKIA2AK7N2V7WE6ZPUO4","89HTlnFZkfYjYE7O+xatWvvhQh8x6g4FoycVw7a1");
-                       AWSCredentials credentials = new BasicAWSCredentials("*********************","***************************");
+             AWSCredentials credentials = new BasicAWSCredentials("*********************","***************************");
             this.s3Client = new AmazonS3Client(credentials);
         }catch (AmazonS3Exception ex){
             ex.printStackTrace();
